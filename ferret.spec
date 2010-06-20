@@ -2,11 +2,12 @@ Summary:	FERRET - a broadcast analysis tool
 #Summary(pl.UTF-8):	-
 Name:		ferret
 Version:	1.1
-Release:	1
+Release:	2
 License:	"all rights reserved"
 Group:		Applications
 Source0:	http://www.erratasec.com/Ferret-1_1.zip
 # NoSource0-md5:	f9fbd4eb5eb178589584a59052b35d02
+Patch0:		radiotap.patch
 URL:		http://www.erratasec.com/ferret.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -21,6 +22,7 @@ network where that machine comes from.
 
 %prep
 %setup -q -n Ferret
+%patch0 -p1
 rm -rf bin/*/ bin/ferret tmp/*
 
 %build

@@ -1,0 +1,20 @@
+--- Ferret/src/parser/layer1.c.orig	2007-03-27 20:53:02.000000000 +0200
++++ Ferret/src/parser/layer1.c	2010-06-20 02:37:35.357468557 +0200
+@@ -116,6 +116,17 @@
+ 		}
+ 		break;
+ 
++	case 127: /* radiotap, DLT_IEEE802_11_RADIO */
++		{
++			unsigned header_length = ex16le(px+2);
++			if (header_length >= length) {
++				FRAMERR(frame, "radiotap header too large: %d\n", header_length);
++				return;
++			}
++			process_wifi_frame(ferret, frame, px+header_length, length-header_length);
++		}
++		break;
++
+ 	default:
+ 		FRAMERR(frame, "unknown linktype = %d (expected Ethernet or wifi)\n", frame->protocol);
+ 		break;
