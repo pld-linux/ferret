@@ -9,6 +9,7 @@ Source0:	http://www.erratasec.com/Ferret-1_1.zip
 # NoSource0-md5:	f9fbd4eb5eb178589584a59052b35d02
 Patch0:		radiotap.patch
 URL:		http://www.erratasec.com/ferret.html
+BuildRequires:	unzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
