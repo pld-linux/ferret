@@ -23,7 +23,7 @@ network where that machine comes from.
 
 %prep
 %setup -q -n Ferret
-%patch0 -p1
+%patch -P0 -p1
 rm -rf bin/*/ bin/ferret tmp/*
 
 %build
